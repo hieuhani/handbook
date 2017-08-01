@@ -5,6 +5,7 @@ import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { AsyncComponentProvider, createAsyncContext } from 'react-async-component';
 import asyncBootstrapper from 'react-async-bootstrapper';
+import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import configureStore from '../../../shared/store';
 import config from '../../../config';
 
@@ -42,6 +43,7 @@ export default function reactApplicationMiddleware(request, response) {
   // Create a context for <StaticRouter>, which will allow us to
   // query for the results of the render.
   const reactRouterContext = {};
+  const sheet = new ServerStyleSheet();
 
   // Create the redux store.
   const store = configureStore();
@@ -50,7 +52,9 @@ export default function reactApplicationMiddleware(request, response) {
     <AsyncComponentProvider asyncContext={asyncComponentsContext}>
       <StaticRouter location={request.url} context={reactRouterContext}>
         <Provider store={store}>
-          <App />
+          <StyleSheetManager sheet={sheet.instance}>
+            <App />
+          </StyleSheetManager>
         </Provider>
       </StaticRouter>
     </AsyncComponentProvider>
@@ -60,7 +64,7 @@ export default function reactApplicationMiddleware(request, response) {
   // components are resolved for the render.
   asyncBootstrapper(app).then(() => {
     const appString = renderToString(app);
-
+    const styleTags = sheet.getStyleElement();
     // Generate the html response.
     const html = renderToStaticMarkup(
       <ServerHTML
@@ -69,6 +73,7 @@ export default function reactApplicationMiddleware(request, response) {
         helmet={Helmet.rewind()}
         storeState={store.getState()}
         asyncComponentsState={asyncComponentsContext.getState()}
+        styleTags={styleTags}
       />,
     );
 

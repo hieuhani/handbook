@@ -20,14 +20,13 @@ if (existsSync(pathResolve(__dirname, '../../node_modules'))) {
 // Inspired by "create-react-app". Thanks @gaearon :)
 function checkNodeVersion() {
   var semver = require('semver');
-
+  console.error(
+    'You are currently running Node %s but %s requires %s. Please use a supported version of Node.\n',
+    process.version,
+    packageJson.name,
+    packageJson.engines.node,
+  );
   if (!semver.satisfies(process.version, packageJson.engines.node)) {
-    console.error(
-      'You are currently running Node %s but %s requires %s. Please use a supported version of Node.\n',
-      process.version,
-      packageJson.name,
-      packageJson.engines.node,
-    );
     process.exit(1);
   }
 }

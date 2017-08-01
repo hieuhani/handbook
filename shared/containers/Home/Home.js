@@ -2,7 +2,6 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-
 import { testRedux } from './actions';
 
 class Home extends React.PureComponent {
@@ -13,6 +12,7 @@ class Home extends React.PureComponent {
         <Helmet>
           <title>Homepage</title>
         </Helmet>
+        Hello
         <button onClick={this.props.testRedux}>Click</button>
       </div>
     );
