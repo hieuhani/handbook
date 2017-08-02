@@ -4,6 +4,7 @@ import Route from 'react-router-dom/Route';
 import Helmet from 'react-helmet';
 import Error404 from './components/Error404';
 import Home from './containers/Home';
+import Auth from './containers/Auth';
 
 import config from '../config';
 
@@ -92,6 +93,7 @@ function App() {
       </Helmet>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/auth" component={Auth} />
         <Route component={Error404} />
       </Switch>
     </div>

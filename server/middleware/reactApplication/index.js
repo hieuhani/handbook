@@ -45,8 +45,9 @@ export default function reactApplicationMiddleware(request, response) {
   const reactRouterContext = {};
   const sheet = new ServerStyleSheet();
 
+  const flash = request.flash();
   // Create the redux store.
-  const store = configureStore();
+  const store = configureStore({ flash });
   // Declare our React application.
   const app = (
     <AsyncComponentProvider asyncContext={asyncComponentsContext}>

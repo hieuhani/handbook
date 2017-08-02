@@ -44,3 +44,7 @@ flow-coverage/
 
 # OSX Files
 .DS_Store
+
+.env.development
+.env.production
+

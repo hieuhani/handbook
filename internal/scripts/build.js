@@ -9,6 +9,12 @@ import webpackConfigFactory from '../webpack/configFactory';
 import { exec } from '../utils';
 import config from '../../config';
 
+const dotenv = require('dotenv');
+
+if (!process.env.NO_LOAD_ENV_FILE) {
+  dotenv.config({ path: `.env.${process.env.NODE_ENV || 'development'}` });
+}
+
 // eslint-disable-next-line no-unused-vars
 const [x, y, ...args] = process.argv;
 

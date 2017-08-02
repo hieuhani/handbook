@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "database": "novelog_db",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": 5432
+  },
+  "test": {
+    "username": "postgres",
+    "database": "novelog_db_test",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": 5432
+  },
+  "production": {
+    "username": "postgres",
+    "database": "novelog_db_production",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": 5432
+  }
+}
