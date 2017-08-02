@@ -27,7 +27,7 @@ const values = {
   },
 
   // The host on which the server should run.
-  host: EnvVars.string('HOST', '0.0.0.0'),
+  host: EnvVars.string('HOST', 'localhost'),
   // The port on which the server should run.
   port: EnvVars.number('PORT', 1337),
 
@@ -95,6 +95,7 @@ const values = {
     styleSrc: [
       'cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css',
       'fonts.googleapis.com/css',
+      'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css',
     ],
   },
 

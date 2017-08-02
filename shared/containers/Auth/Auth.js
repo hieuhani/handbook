@@ -1,3 +1,10 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import ViewAuth from '../../components/ViewAuth';
+import { selectFlashError } from './selectors';
 
-export default () => <div>Login Page</div>;
+const mapStateToProps = createStructuredSelector({
+  flashError: selectFlashError(),
+});
+
+export default connect(mapStateToProps)(ViewAuth);

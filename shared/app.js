@@ -2,6 +2,7 @@ import React from 'react';
 import Switch from 'react-router-dom/Switch';
 import Route from 'react-router-dom/Route';
 import Helmet from 'react-helmet';
+
 import Error404 from './components/Error404';
 import Home from './containers/Home';
 import Auth from './containers/Auth';
@@ -90,6 +91,10 @@ function App() {
         <meta name="msapplication-wide310x150logo" content="/favicons/mstile-310x150.png" />
         <meta name="msapplication-square310x310logo" content="/favicons/mstile-310x310.png" />
         <link rel="manifest" href="/manifest.json" />
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        />
       </Helmet>
       <Switch>
         <Route exact path="/" component={Home} />
