@@ -13,7 +13,9 @@ class Home extends React.PureComponent {
           <title>Homepage</title>
         </Helmet>
         Hello
-        <button onClick={this.props.testRedux}>Click</button>
+        <button className="btn" onClick={this.props.testRedux}>
+          Click
+        </button>
       </div>
     );
   }

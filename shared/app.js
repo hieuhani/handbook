@@ -93,7 +93,7 @@ function App() {
         <link rel="manifest" href="/manifest.json" />
         <link
           rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
         />
       </Helmet>
       <Switch>
