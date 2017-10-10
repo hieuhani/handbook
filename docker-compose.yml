@@ -1,0 +1,41 @@
+version: '3'
+services: 
+  dev:
+    image: node:8.4-alpine
+    working_dir: /opt/app
+    command: sh run-dev.sh
+    environment: 
+      NODE_ENV: development
+      PORT: 1337
+      VIRTUAL_PORT: 1337
+      VIRTUAL_HOST: novalog.dev
+      HTTPS_METHOD: noredirect
+    ports: 
+      - "1337"
+      - "7331" #port for dev client
+    depends_on:
+      - db-dev
+      - redis
+    links:
+      - db-dev:db
+      - redis:redis
+    volumes: 
+      - .:/opt/app
+    restart: unless-stopped
+    network_mode: bridge
+    command: sh run-dev.sh
+  db-dev:
+    image: postgres:9.6.3-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secured!
+    volumes:
+      - db-dev:/var/lib/postgresql/data
+    restart: unless-stopped
+    network_mode: bridge
+  redis:
+    image: redis
+    restart: unless-stopped
+    network_mode: bridge
+volumes:
+  db-dev:
